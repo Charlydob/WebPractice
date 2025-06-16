@@ -1,22 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web De Practica</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Web de Práctica: Portfolio de Desarrollo Web</title>
+<meta name="description" content="Portfolio de práctica de desarrollo web con información sobre mí, habilidades y formulario de contacto." />
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Bienvenido a mi Web de Práctica</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>Punto a rellenar 1</li>
-                <li>Punto a rellenar 2</li>
-                <li>Punto a rellenar 3</li>
-            </ul>
-        </div>
+
+<!-- BOTÓN DE MENÚ HAMBURGUESA (SOLO SE MUESTRA EN MÓVILES) -->
+<button class="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+
+<!-- SIDEBAR LATERAL -->
+<aside class="sidebar" role="navigation" aria-label="Menú principal">
+<nav class="sidebar__nav">
+    <ul class="sidebar__list">
+    <li class="sidebar__item">
+        <a href="#">
+        <img src="Recursos/imagenes/casa.png" alt="Inicio" class="sidebar__icon" />
+        <span class="sidebar__text">Inicio</span>
+        </a>
+    </li>
+    <li class="sidebar__item">
+        <a href="#projects">
+        <img src="Recursos/imagenes/lupa.png" alt="Proyectos" class="sidebar__icon" />
+        <span class="sidebar__text">Proyectos</span>
+        </a>
+    </li>
+    <li class="sidebar__item">
+        <a href="#contact">
+        <img src="Recursos/imagenes/mensaje.png" alt="Contacto" class="sidebar__icon" />
+        <span class="sidebar__text">Contacto</span>
+        </a>
+    </li>
+    <li class="sidebar__item">
+        <a href="#about-me">
+        <img src="Recursos/imagenes/perfil.png" alt="Perfil" class="sidebar__icon" />
+        <span class="sidebar__text">Perfil</span>
+        </a>
+    </li>
+    </ul>
+</nav>
+</aside>
+
+<!-- CABECERA PRINCIPAL -->
+<header>
+<h1>Bienvenido a mi Web de Práctica</h1>
+</header>
+
+<!-- NAVEGACIÓN PRINCIPAL HORIZONTAL -->
+<nav class="navigation" role="navigation" aria-label="Navegación principal">
+<ul id="main-nav">
+    <li><a href="#about-me">Sobre mí</a></li>
+    <li><a href="#skills">Habilidades</a></li>
+    <li><a href="#contact">Contacto</a></li>
+</ul>
+</nav>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-content">
+<section id="about-me">
+    <h2>Sobre mí</h2>
+    <img src="Recursos/imagenes/perfil.jpg" alt="Foto de perfil" class="profile-img" />
+    <p>
+    ¡Hola! Soy un desarrollador web en formación, apasionado por aprender nuevas tecnologías y crear soluciones últiles. Esta web es parte de mi práctica para mejorar mis habilidades en HTML, CSS y JavaScript.
+    </p>
+</section>
+
+<section id="skills">
+    <h2>Habilidades</h2>
+    <ul class="skills-list">
+    <li>HTML5 semántico</li>
+    <li>CSS accesible</li>
+    <li>JavaScript</li>
+    <li>Buenas prácticas de accesibilidad</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Proyectos</h2>
+    <ul>
+    <li> Juego Web 1</li>
+    <li> Web prueba 2</li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contacto</h2>
+    <form autocomplete="on">
+    <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required aria-required="true" autocomplete="name" />
     </div>
+    <div>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" />
+    </div>
+    <div>
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+    </div>
+    <button type="submit">Enviar</button>
+    </form>
+</section>
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+<p>Gracias por ver.</p>
+</footer>
+
 </body>
 </html>

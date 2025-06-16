@@ -1,0 +1,356 @@
+/* === ESTILOS GENERALES === */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* === HEADER SUPERIOR === */
+header {
+    background: #003366;
+    color: #fff;
+    padding: 1rem 1rem;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    margin-left: 56px;
+    z-index: 10;
+}
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* === MENÚ HAMBURGUESA === */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #003366;
+    margin-left: 56px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+/* === NAVEGACIÓN PRINCIPAL (NO LATERAL) === */
+nav {
+    background: #f5f5f5;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-left: 56px;
+}
+nav a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: 700;
+    outline: none;
+}
+nav a:focus,
+nav a:hover {
+    text-decoration: underline;
+    background: #e0e7ef;
+}
+
+/* === SIDEBAR LATERAL === */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 56px;
+    background: transparent;
+    backdrop-filter: blur(100%);
+    transition: width 0.3s ease, background 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar:hover,
+.sidebar.sidebar--open {
+    width: 150px;
+}
+.sidebar__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 2rem;
+}
+.sidebar__list {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+    margin-left: -20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.sidebar__item {
+    width: 100%;
+    border-radius: 4px;
+}
+.sidebar__item a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 20px;
+    color: #003366;
+    text-decoration: none;
+    background: transparent;
+    font-weight: 600;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+.sidebar__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+.sidebar__text {
+    display: none;
+}
+.sidebar:hover .sidebar__text,
+.sidebar.sidebar--open .sidebar__text {
+    display: inline;
+}
+.sidebar__item a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* === CONTENIDO PRINCIPAL === */
+.main-content {
+    flex: 1;
+    padding: 32px;
+    margin-left: 56px;
+    transition: margin-left 0.3s ease;
+}
+.sidebar:hover ~ .main-content,
+.sidebar.sidebar--open ~ .main-content {
+    margin-left: 56px;
+}
+
+/* === NAV HORIZONTAL === */
+nav.navigation {
+    position: relative;
+    top: 0px;
+    left: 56px;
+    width: calc(100% - 56px);
+    background: #f5f5f5;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    margin-bottom: 0;
+}
+
+/* === SECCIONES DEL DOCUMENTO === */
+section {
+    margin-bottom: 2rem;
+}
+h1, h2, h3 {
+    font-weight: 700;
+}
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+h1, h2, h3, img, video, form, ul, li, p {
+    user-select: none;
+    cursor: default;
+}
+
+/* === SECCIÓN DE PROYECTOS === */
+#projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#projects ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#projects li {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    max-width: 100%;
+    width: fit-content;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    user-select: none;
+    cursor: default;
+    white-space: nowrap;
+}
+
+#projects li:hover {
+    transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+    #projects li {
+        width: 100%;
+        white-space: normal;
+    }
+}
+
+/* === LISTAS INTERNAS === */
+ul {
+    padding-left: 1.5rem;
+}
+.skills-list li {
+    margin-bottom: 0.3rem;
+}
+.skills-list li::before {
+    content: "🔹";
+    margin-right: 0.5rem;
+    color: #003366;
+}
+
+/* === FORMULARIO DE CONTACTO === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 6px;
+    max-width: 100%;
+}
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+label {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+input,
+textarea,
+button {
+    font-family: inherit;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+input,
+textarea {
+    padding: 0.5rem;
+    border: 1px solid #003366;
+    border-radius: 4px;
+    background: #fff;
+    color: #222;
+}
+input:focus,
+textarea:focus {
+    outline: 2px solid #003366;
+}
+button {
+    background: #003366;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+button:focus,
+button:hover {
+    background: #00509e;
+}
+
+/* === IMAGEN DE PERFIL === */
+.profile-img {
+    max-width: 120px;
+    border-radius: 50%;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+/* === IMAGENES Y VIDEOS === */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+.lightbox-img {
+    max-width: 10%;
+    height: 80%;
+    
+}
+
+/* === FOOTER === */
+footer {
+    margin-left: 56px;
+    color: #000000;
+    text-align: start;
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        background: #f5f5f5;
+        padding: 1rem;
+        margin-left: 0;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    header,
+    footer {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
