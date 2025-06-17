@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Charly';
+    src: url(../Recursos/fuentes/static/WorkSans-Black.ttf) format('truetype');
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'Charly';
+    src: url(../Recursos/fuentes/static/WorkSans-Regular.ttf) format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Charly';
+    src: url(../Recursos/fuentes/static/WorkSans-ExtraLight.ttf) format('truetype');
+    font-weight: 100;
+}

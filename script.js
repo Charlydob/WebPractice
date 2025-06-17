@@ -16,26 +16,6 @@ function toggleMenu() {
   nav.classList.toggle('active');
 }
 
-// Validación de formulario de contacto
-const form = document.querySelector('form');
-if (form) {
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-
-    if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
-      alert('Por favor completa todos los campos.');
-      return;
-    }
-
-    // Aquí podrías agregar lógica de envío real o mensaje de éxito
-    alert('Formulario enviado correctamente.');
-    form.reset();
-  });
-}
-
 // Efecto lightbox para imágenes de proyectos
 const images = document.querySelectorAll('.lightbox-img');
 images.forEach(img => {
@@ -67,3 +47,58 @@ images.forEach(img => {
     });
   });
 });
+
+// FORMULARIO: guardar y mostrar en localStorage
+const form = document.getElementById('contact-form');
+const submissionsList = document.getElementById('formSubmissions'); // Este div lo usaremos para mostrar los datos
+
+if (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = form.querySelector('#name').value.trim();
+    const email = form.querySelector('#email').value.trim();
+    const message = form.querySelector('#message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Por favor completa todos los campos.');
+      return;
+    }
+
+    const formData = {
+      name,
+      email,
+      message,
+      date: new Date().toLocaleString()
+    };
+
+    const existing = JSON.parse(localStorage.getItem('contactMessages')) || [];
+    existing.push(formData);
+    localStorage.setItem('contactMessages', JSON.stringify(existing));
+
+    alert('Mensaje guardado localmente.');
+    form.reset();
+    renderMessages();
+  });
+
+  // Mostrar mensajes guardados
+  function renderMessages() {
+    const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+    if (!submissionsList) return;
+    submissionsList.innerHTML = '';
+
+    messages.forEach(msg => {
+      const item = document.createElement('div');
+      item.innerHTML = `
+        <strong>${msg.name}</strong> (${msg.email})<br/>
+        <em>${msg.date}</em><br/>
+        <p>${msg.message}</p>
+        <hr/>
+      `;
+      submissionsList.appendChild(item);
+    });
+  }
+
+  // Mostrar al cargar la página
+  renderMessages();
+}
