@@ -1,0 +1,19 @@
+<div>
+    <p>Task: @TaskName</p>
+    <button @onclick="MarkAsComplete">Mark as Complete</button>
+
+</div>
+@code {
+    [Parameter]
+    public string TaskName { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnTaskComplete { get; set; }
+
+    private void MarkAsComplete()
+    {
+        OnTaskComplete.InvokeAsync(TaskName);
+    }
+
+
+}

@@ -1,0 +1,24 @@
+@page "/tasks"
+
+<h3>Task Manager</h3>
+
+@foreach (var task in TasksList)
+{
+    <ChildTaskDisplay TaskName="@task" OnTaskComplete="HandleTaskCompletion" />
+}
+@code {
+    private List<string> TasksList = new List<string>
+    {
+        "Task 1",
+        "Task 2",
+        "Task 3"
+    };
+
+    private void HandleTaskCompletion(string completedTask)
+    {
+        TasksList.Remove(completedTask);
+        StateHasChanged(); // Refresh the UI to reflect the changes
+    }
+
+
+}
