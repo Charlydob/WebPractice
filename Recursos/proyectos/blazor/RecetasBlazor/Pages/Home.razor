@@ -1,0 +1,42 @@
+﻿@page "/"
+
+@code {
+    private List<Recipe> recipes = new (){ // List of recipes
+        new Recipe
+        {
+            Id = 1,
+            Name = "Spaghetti Carbonara",
+            Description = "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+            Ingredients = "Spaghetti, eggs, Parmesan cheese, pancetta, black pepper",
+        },
+        new Recipe
+        {
+            Id = 2,
+            Name = "Chicken Curry",
+            Description = "A flavorful dish made with chicken, spices, and coconut milk.",
+            Ingredients = "Chicken, curry powder, coconut milk, onions, garlic",
+        },
+        new Recipe
+        {
+            Id = 3,
+            Name = "Beef Tacos",
+            Description = "Mexican dish consisting of a folded or rolled tortilla filled with various mixtures.",
+            Ingredients = "Ground beef, taco seasoning, tortillas, lettuce, cheese",
+        }
+    };
+    private Recipe selectedRecipe; // The currently selected recipe
+    private void SelectRecipe(Recipe recipe) // Method to set the selected recipe
+    {
+        selectedRecipe = recipe; // Update the selected recipe
+    }
+}
+
+<h3>Recipe List</h3>
+<ul>
+    @foreach (var recipe in recipes)
+    {
+        <li @onclick="() => SelectRecipe(recipe)" style="cursor: pointer;">
+            @recipe.Name
+        </li>
+    }
+</ul>

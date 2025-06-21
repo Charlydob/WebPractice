@@ -1,0 +1,9 @@
+<ChildComponent OnRecipeSelected="HandleRecipeSelected" />
+
+@code {
+    private void HandleRecipeSelected(Recipe recipe)
+    {
+        // Handle the selected recipe here
+        Console.WriteLine($"Selected Recipe: {recipe.Name}");
+    }
+}

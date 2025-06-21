@@ -1,0 +1,25 @@
+@page "/edit-recipes/{recipeId:int?}" // Route parameter for recipe ID la ? en int sirve para que acepte valores nulos
+
+@code {
+    [Parameter]
+    public int? RecipeId { get; set; } // Optional parameter for recipe ID
+    private string recipeName = "Default Recipe name"; // Name of the recipe
+    private string recipeDescription = "Default Recipe description"; // Description of the recipe
+    private string recipeIngredients = "Default Recipe ingredients"; // Ingredients of the recipe
+
+    private void SaveRecipe(){
+        // Logic to save the recipe
+        // This could involve calling an API or updating a database
+        Console.WriteLine($"Recipe saved: {recipeName}, {recipeDescription}, {recipeIngredients}");
+    }
+}
+
+<h3>Edit Recipe</h3>
+<input @bind="recipeName" placeholder="Enter Recipe Name" /> 
+<br/> <!-- salto de linea-->
+<textarea @bind="recipeDescription" placeholder="Enter Recipe Description"></textarea>
+<br/> <!-- salto de linea-->
+<textarea @bind="recipeIngredients" placeholder="Enter Recipe Ingredients"></textarea>
+<br/> <!-- salto de linea-->
+<button @onclick="SaveRecipe">Save Recipe</button> <!-- Button to save the recipe -->
+<p>Recipe ID: @RecipeId</p> <!-- Display the recipe ID -->

@@ -1,0 +1,56 @@
+@page "/recipe/{recipeId:int}"
+
+@code {
+    [Parameter]
+    public int RecipeId { get; set; }
+
+    private Recipe selectedRecipe;
+
+    protected override void OnParametersSet()
+    {
+        selectedRecipe = recipes.FirstOrDefault(r => r.Id == RecipeId);
+        if (selectedRecipe == null)
+        {
+            // Handle the case where the recipe is not found
+            Console.WriteLine($"Recipe with ID {RecipeId} not found.");
+        }
+    }
+    private List<Recipe> recipes = new()
+    {
+        new Recipe
+        {
+            Id = 1,
+            Name = "Spaghetti Carbonara",
+            Description = "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+            Ingredients = "Spaghetti, eggs, Parmesan cheese, pancetta, black pepper",
+        },
+        new Recipe
+        {
+            Id = 2,
+            Name = "Chicken Curry",
+            Description = "A flavorful dish made with chicken, spices, and coconut milk.",
+            Ingredients = "Chicken, curry powder, coconut milk, onions, garlic",
+        },
+        new Recipe
+        {
+            Id = 3,
+            Name = "Beef Tacos",
+            Description = "Mexican dish consisting of a folded or rolled tortilla filled with various mixtures.",
+            Ingredients = "Ground beef, taco seasoning, tortillas, lettuce, cheese",
+        }
+    };
+}
+
+<h3>Recipe Details</h3>
+@if (selectedRecipe != null)
+{
+    <div>
+        <h4>@selectedRecipe.Name</h4>
+        <p><strong>Description:</strong> @selectedRecipe.Description</p>
+        <p><strong>Ingredients:</strong> @selectedRecipe.Ingredients</p>
+    </div>
+}
+else
+{
+    <p>Recipe not found.</p>
+}
